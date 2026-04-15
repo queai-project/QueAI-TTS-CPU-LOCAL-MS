@@ -1,0 +1,13 @@
+{
+  "name": "tts_local_cpu",
+  "display_name": "TTS Local CPU",
+  "ui_entry_point": "/api/tts_local_cpu/ui",
+  "configuration_entry_point": "/api/tts_local_cpu/config/",
+  "documentation_entry_point": "/api/tts_local_cpu/docs",
+  "healthcheck_entry_point": "/api/tts_local_cpu/health",
+  "version": "5.0.0",
+  "logo": "stt_logo.png",
+  "description": "Módulo TTS oficial para QueAI. Texto a voz de alta fidelidad basado en Kokoro-82M. Ejecución local en CPU, soporte para Inglés/Español y múltiples voces.",
+  "author": "Alejandro Fonseca && Juana Iris",
+  "license": "MIT"
+}

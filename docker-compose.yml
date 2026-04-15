@@ -1,0 +1,17 @@
+services:
+  plugin-tts_local_cpu:
+    build: .
+    container_name: plugin_tts_local_cpu_service
+    env_file:
+      - .env
+    networks:
+      - odoo_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.plugin-tts_local_cpu.rule=PathPrefix(`/api/tts_local_cpu`)"
+      - "traefik.http.routers.plugin-tts_local_cpu.entrypoints=web"
+      - "traefik.http.services.plugin-tts_local_cpu.loadbalancer.server.port=8000"
+
+networks:
+  odoo_network:
+    external: true
