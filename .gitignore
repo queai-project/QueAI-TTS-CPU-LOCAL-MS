@@ -205,3 +205,19 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+
+# Ignorar todo dentro de voices
+voices/**
+
+# Permitir scripts
+!voices/_script/
+!voices/_script/**
+
+# Permitir cualquier carpeta samples y su contenido
+!voices/**/samples/
+!voices/**/samples/**
+
+# Permitir metadatos json
+!voices/**/*.onnx.json
