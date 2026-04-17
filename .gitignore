@@ -206,3 +206,19 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# Ignorar contenido de voices por defecto, pero no bloquear el recorrido
+voices/**
+
+# Permitir que Git siga bajando por los directorios
+!voices/**/
+
+# Permitir scripts
+!voices/_script/
+!voices/_script/**
+
+# Permitir samples
+!voices/**/samples/
+!voices/**/samples/**
+
+# Permitir metadatos JSON
+!voices/**/*.onnx.json
