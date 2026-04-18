@@ -15,10 +15,6 @@ class Settings(BaseSettings):
     # Base pública única para todo el módulo
     BASE_PATH: str = "/api/tts_local_cpu"
 
-    # ==========================================
-    # AUTH
-    # ==========================================
-    API_KEY: str
 
     # ==========================================
     # LOG

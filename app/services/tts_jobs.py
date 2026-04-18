@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 import pathlib
 import queue
@@ -23,9 +23,12 @@ class TTSJob:
     output_path: pathlib.Path
     status: str
     created_at: datetime
+    voice_settings: dict | None = None
     started_at: datetime | None = None
     finished_at: datetime | None = None
     error: str | None = None
+    preview: str | None = None
+    original_filename: str | None = None
 
 
 class TTSJobManager:
@@ -42,7 +45,11 @@ class TTSJobManager:
             return
 
         self._cleanup_all_storage()
-        self._worker = threading.Thread(target=self._run_worker, name="tts-job-worker", daemon=True)
+        self._worker = threading.Thread(
+            target=self._run_worker,
+            name="tts-job-worker",
+            daemon=True,
+        )
         self._worker.start()
         logger.info("TTS job worker started")
 
@@ -55,13 +62,26 @@ class TTSJobManager:
         self._worker = None
         logger.info("TTS job worker stopped")
 
-    def submit_text(self, text: str, voice: str) -> TTSJob:
+    def submit_text(
+        self,
+        text: str,
+        voice: str,
+        voice_settings: dict | None = None,
+    ) -> TTSJob:
         service = TTSService(voice)
         service.validate_voice()
-        service.validate_text(text)
+        clean_text = service.validate_text(text)
+        normalized_settings = TTSService.normalize_voice_settings(voice_settings)
 
-        job = self._create_job(kind="text", voice=voice, input_suffix=".txt")
-        job.input_path.write_text(text.strip(), encoding="utf-8")
+        job = self._create_job(
+            kind="text",
+            voice=voice,
+            input_suffix=".txt",
+            voice_settings=normalized_settings,
+            preview=clean_text,
+            original_filename=None,
+        )
+        job.input_path.write_text(clean_text, encoding="utf-8")
         self._queue.put(job.job_id)
         return job
 
@@ -71,6 +91,7 @@ class TTSJobManager:
         filename: str | None,
         content_type: str | None,
         voice: str,
+        voice_settings: dict | None = None,
     ) -> TTSJob:
         service = TTSService(voice)
         service.validate_voice()
@@ -79,7 +100,17 @@ class TTSJobManager:
             raise HTTPException(status_code=422, detail="The uploaded file is empty")
 
         extension = service.resolve_document_extension(filename or "document", content_type)
-        job = self._create_job(kind="document", voice=voice, input_suffix=extension)
+        normalized_settings = TTSService.normalize_voice_settings(voice_settings)
+
+        preview = filename or f"document{extension}"
+        job = self._create_job(
+            kind="document",
+            voice=voice,
+            input_suffix=extension,
+            voice_settings=normalized_settings,
+            preview=preview,
+            original_filename=filename,
+        )
         job.input_path.write_bytes(content)
         self._queue.put(job.job_id)
         return job
@@ -102,6 +133,9 @@ class TTSJobManager:
             "started_at": job.started_at,
             "finished_at": job.finished_at,
             "error": job.error,
+            "preview": job.preview,
+            "original_filename": job.original_filename,
+            "voice_settings": job.voice_settings,
             "result_ready": job.status == "done" and job.output_path.exists(),
         }
 
@@ -126,7 +160,15 @@ class TTSJobManager:
 
         return {"removed_jobs": len(removable_ids)}
 
-    def _create_job(self, kind: str, voice: str, input_suffix: str) -> TTSJob:
+    def _create_job(
+        self,
+        kind: str,
+        voice: str,
+        input_suffix: str,
+        voice_settings: dict | None,
+        preview: str | None,
+        original_filename: str | None,
+    ) -> TTSJob:
         job_id = uuid.uuid4().hex
         job_dir = self.jobs_dir / job_id
         job_dir.mkdir(parents=True, exist_ok=True)
@@ -139,6 +181,9 @@ class TTSJobManager:
             output_path=job_dir / "output.wav",
             status="queued",
             created_at=datetime.now(timezone.utc),
+            voice_settings=voice_settings,
+            preview=preview,
+            original_filename=original_filename,
         )
         with self._jobs_lock:
             self._jobs[job_id] = job
@@ -156,12 +201,25 @@ class TTSJobManager:
 
     def _process_job(self, job_id: str):
         job = self.get_job(job_id)
-        self._update_job(job_id, status="processing", started_at=datetime.now(timezone.utc), error=None)
+        self._update_job(
+            job_id,
+            status="processing",
+            started_at=datetime.now(timezone.utc),
+            error=None,
+        )
 
         try:
             service = TTSService(job.voice)
-            service.generate_speech_from_input_path(job.input_path, job.output_path)
-            self._update_job(job_id, status="done", finished_at=datetime.now(timezone.utc))
+            service.generate_speech_from_input_path(
+                job.input_path,
+                job.output_path,
+                voice_settings=job.voice_settings,
+            )
+            self._update_job(
+                job_id,
+                status="done",
+                finished_at=datetime.now(timezone.utc),
+            )
             logger.info("TTS job %s finished", job_id)
         except Exception as exc:
             self._update_job(

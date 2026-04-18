@@ -6,25 +6,26 @@
     <title>TTS Local CPU</title>
     <style>
         :root {
-            --bg-1: #0b0c0f;
-            --bg-2: #111317;
-            --panel: rgba(20, 23, 29, 0.92);
-            --panel-2: rgba(28, 31, 38, 0.96);
-            --border: rgba(255, 255, 255, 0.08);
-            --border-strong: rgba(255, 255, 255, 0.14);
-            --text: #f3f5f7;
-            --muted: #a9b0bb;
-            --soft: #d9dde4;
-            --accent: #d62828;
-            --accent-2: #ff5c5c;
+            --bg-1: #070b12;
+            --bg-2: #0d1420;
+            --panel: rgba(15, 22, 34, 0.9);
+            --panel-2: rgba(22, 31, 48, 0.98);
+            --panel-3: rgba(255, 255, 255, 0.035);
+            --line: rgba(255, 255, 255, 0.08);
+            --line-strong: rgba(255, 255, 255, 0.14);
+            --text: #f5f8fc;
+            --muted: #95a4bc;
+            --soft: #dce7f6;
+            --primary: #e53935;
+            --primary-2: #ff6b6b;
             --ok: #20c997;
             --warn: #ffb020;
             --danger: #ff5d5d;
-            --shadow: 0 18px 60px rgba(0, 0, 0, 0.4);
-            --radius-xl: 22px;
+            --shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+            --radius-xl: 28px;
             --radius-lg: 18px;
             --radius-md: 14px;
-            --radius-sm: 12px;
+            --radius-sm: 10px;
         }
 
         * { box-sizing: border-box; }
@@ -35,17 +36,17 @@
             font-family: "Inter", "Segoe UI", Arial, sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at top left, rgba(214, 40, 40, 0.18), transparent 25%),
-                radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 22%),
+                radial-gradient(circle at top left, rgba(229, 57, 53, 0.18), transparent 24%),
+                radial-gradient(circle at top right, rgba(255,255,255,0.05), transparent 22%),
                 linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
         }
 
         body {
-            padding: 24px;
+            padding: 22px;
         }
 
         .app {
-            width: min(1280px, 100%);
+            width: min(1380px, 100%);
             margin: 0 auto;
             display: grid;
             gap: 20px;
@@ -53,29 +54,16 @@
 
         .glass {
             background: var(--panel);
-            border: 1px solid var(--border);
+            border: 1px solid var(--line);
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow);
             backdrop-filter: blur(14px);
         }
 
         .hero {
-            padding: 28px;
+            padding: 30px;
             display: grid;
-            gap: 18px;
-        }
-
-        .hero-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-
-        .brand {
-            display: grid;
-            gap: 10px;
+            gap: 14px;
         }
 
         .eyebrow {
@@ -83,87 +71,50 @@
             align-items: center;
             gap: 8px;
             font-size: 0.78rem;
+            color: var(--muted);
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: var(--muted);
         }
 
         .dot {
             width: 8px;
             height: 8px;
             border-radius: 999px;
-            background: var(--accent);
-            box-shadow: 0 0 0 6px rgba(214, 40, 40, 0.14);
+            background: var(--primary);
+            box-shadow: 0 0 0 6px rgba(229, 57, 53, 0.14);
         }
 
         .hero h1 {
             margin: 0;
-            font-size: clamp(2rem, 3vw, 3.3rem);
+            font-size: clamp(2rem, 3vw, 3.35rem);
             line-height: 1;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.045em;
         }
 
         .hero p {
             margin: 0;
             color: var(--muted);
-            max-width: 78ch;
-            line-height: 1.6;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .grid-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 14px;
-        }
-
-        .metric {
-            padding: 16px;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            display: grid;
-            gap: 8px;
-        }
-
-        .metric .k {
-            color: var(--muted);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-
-        .metric .v {
-            font-size: 1.05rem;
-            font-weight: 700;
-            word-break: break-word;
+            max-width: 86ch;
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         .layout {
             display: grid;
-            grid-template-columns: minmax(340px, 420px) 1fr;
+            grid-template-columns: minmax(400px, 560px) 1fr;
             gap: 20px;
         }
 
         .panel {
-            padding: 22px;
+            padding: 24px;
+            display: grid;
+            gap: 18px;
         }
 
         .panel h2 {
-            margin: 0 0 8px;
-            font-size: 1.12rem;
+            margin: 0;
+            font-size: 1.16rem;
             letter-spacing: -0.02em;
-        }
-
-        .panel > p {
-            margin: 0 0 18px;
-            color: var(--muted);
-            line-height: 1.55;
         }
 
         .stack {
@@ -182,45 +133,45 @@
         }
 
         .label {
-            font-size: 0.86rem;
+            font-size: 0.88rem;
             color: var(--muted);
         }
 
-        input,
-        textarea,
-        select,
-        button {
-            font: inherit;
+        .hint {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.45;
         }
 
-        input[type="text"],
-        textarea,
         select,
+        textarea,
         input[type="file"] {
             width: 100%;
-            border: 1px solid var(--border);
+            border: 1px solid var(--line);
             border-radius: var(--radius-md);
             background: var(--panel-2);
             color: var(--text);
             padding: 12px 14px;
             outline: none;
-            transition: border-color 0.16s ease, transform 0.16s ease;
+            transition: border-color .15s ease, transform .15s ease;
+            font: inherit;
         }
 
-        input[type="file"] {
-            padding: 10px 12px;
+        select:focus,
+        textarea:focus,
+        input[type="file"]:focus {
+            border-color: rgba(255, 107, 107, 0.55);
         }
 
         textarea {
             min-height: 220px;
             resize: vertical;
-            line-height: 1.55;
+            line-height: 1.58;
         }
 
-        input:focus,
-        textarea:focus,
-        select:focus {
-            border-color: rgba(214, 40, 40, 0.7);
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary);
         }
 
         .row {
@@ -229,41 +180,38 @@
             flex-wrap: wrap;
         }
 
-        button,
-        .link-btn {
+        button {
             border: 0;
             border-radius: 999px;
+            min-height: 44px;
             padding: 12px 18px;
             cursor: pointer;
-            transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            min-height: 44px;
+            font: inherit;
+            transition: transform .14s ease, opacity .14s ease, background .14s ease;
         }
 
-        button:hover,
-        .link-btn:hover {
+        button:hover:not(:disabled) {
             transform: translateY(-1px);
         }
 
         button:disabled {
-            opacity: 0.55;
+            opacity: .55;
             cursor: not-allowed;
-            transform: none;
         }
 
         .primary {
             color: white;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
         }
 
         .secondary {
             color: var(--text);
             background: transparent;
-            border: 1px solid var(--border-strong);
+            border: 1px solid var(--line-strong);
         }
 
         .notice {
@@ -273,151 +221,49 @@
             display: flex;
             align-items: center;
             border: 1px solid transparent;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255,255,255,.03);
             color: var(--soft);
-            line-height: 1.45;
+            line-height: 1.5;
         }
 
         .notice[data-tone="neutral"] {
-            border-color: var(--border);
+            border-color: var(--line);
         }
 
         .notice[data-tone="success"] {
             border-color: rgba(32, 201, 151, 0.35);
             background: rgba(32, 201, 151, 0.12);
-            color: #dffcf3;
-        }
-
-        .notice[data-tone="error"] {
-            border-color: rgba(255, 93, 93, 0.35);
-            background: rgba(255, 93, 93, 0.12);
-            color: #ffe1e1;
+            color: #dcfff4;
         }
 
         .notice[data-tone="warning"] {
             border-color: rgba(255, 176, 32, 0.35);
             background: rgba(255, 176, 32, 0.12);
-            color: #fff0d0;
+            color: #fff1d3;
         }
 
-        .jobs-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 14px;
-        }
-
-        .subtle {
-            color: var(--muted);
-            font-size: 0.92rem;
-        }
-
-        .jobs {
-            display: grid;
-            gap: 14px;
-        }
-
-        .job-card {
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.025);
-            padding: 18px;
-            display: grid;
-            gap: 14px;
-        }
-
-        .job-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .job-head h3 {
-            margin: 0 0 8px;
-            font-size: 1rem;
-        }
-
-        .job-meta {
-            display: grid;
-            gap: 4px;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 116px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.03);
-            font-weight: 700;
-        }
-
-        .pill[data-status="queued"] {
-            border-color: rgba(255, 176, 32, 0.32);
-            color: #ffe3ad;
-            background: rgba(255, 176, 32, 0.08);
-        }
-
-        .pill[data-status="processing"] {
-            border-color: rgba(214, 40, 40, 0.38);
-            color: #ffd7d7;
-            background: rgba(214, 40, 40, 0.13);
-        }
-
-        .pill[data-status="done"] {
-            border-color: rgba(32, 201, 151, 0.35);
-            color: #dcfff4;
-            background: rgba(32, 201, 151, 0.12);
-        }
-
-        .pill[data-status="failed"] {
-            border-color: rgba(255, 93, 93, 0.38);
-            color: #ffe1e1;
+        .notice[data-tone="error"] {
+            border-color: rgba(255, 93, 93, 0.35);
             background: rgba(255, 93, 93, 0.12);
+            color: #ffe2e2;
         }
 
-        .preview {
-            margin: 0;
-            padding: 14px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.03);
-            color: #d7dce4;
-            line-height: 1.55;
-            white-space: pre-wrap;
-            max-height: 220px;
-            overflow: auto;
-        }
-
-        .preview.empty {
-            color: var(--muted);
-            font-style: italic;
-        }
-
-        .audio-block {
+        .voice-card,
+        .settings-card,
+        .actions-card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background: var(--panel-3);
+            padding: 16px;
             display: grid;
             gap: 12px;
         }
 
-        audio {
-            width: 100%;
-            filter: saturate(0) contrast(1.05);
-        }
-
-        .job-actions {
+        .voice-top {
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
             flex-wrap: wrap;
         }
 
@@ -425,41 +271,179 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            min-height: 38px;
-            padding: 8px 12px;
+            min-height: 36px;
+            padding: 7px 12px;
             border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.04);
             color: var(--soft);
             font-size: 0.88rem;
         }
 
-        .badge.ok::before,
-        .badge.off::before,
-        .badge.unknown::before {
-            content: "";
-            width: 8px;
-            height: 8px;
+        .legend {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.86rem;
+            color: var(--muted);
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
             border-radius: 999px;
             display: inline-block;
         }
 
-        .badge.ok::before { background: var(--ok); }
-        .badge.off::before { background: var(--danger); }
-        .badge.unknown::before { background: var(--warn); }
+        .status-dot.ok { background: var(--ok); }
+        .status-dot.warn { background: var(--warn); }
+
+        .progress-wrap {
+            display: none;
+            gap: 8px;
+        }
+
+        .progress-wrap.show {
+            display: grid;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.08);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+            transition: width .2s ease;
+        }
+
+        .slider-row {
+            display: grid;
+            gap: 6px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255,255,255,.05);
+        }
+
+        .slider-row:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .slider-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .slider-title {
+            font-weight: 600;
+        }
+
+        .slider-meta {
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.45;
+        }
+
+        .jobs {
+            display: grid;
+            gap: 12px;
+        }
+
+        details.job {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background: rgba(255,255,255,.025);
+            overflow: hidden;
+        }
+
+        details.job summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 16px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            transition: background .14s ease;
+        }
+
+        details.job[open] summary {
+            background: rgba(255,255,255,.03);
+        }
+
+        details.job summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .job-main {
+            display: grid;
+            gap: 4px;
+        }
+
+        .job-title {
+            font-weight: 700;
+        }
+
+        .job-sub {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .job-state {
+            border-radius: 999px;
+            padding: 8px 12px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.03);
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .job-body {
+            padding: 0 18px 18px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .preview {
+            margin: 0;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.03);
+            color: #d7dce4;
+            line-height: 1.55;
+            white-space: pre-wrap;
+            max-height: 220px;
+            overflow: auto;
+        }
 
         .empty-state {
-            border: 1px dashed var(--border-strong);
+            border: 1px dashed var(--line-strong);
             border-radius: var(--radius-lg);
             padding: 28px;
             text-align: center;
             color: var(--muted);
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255,255,255,.02);
         }
 
-        .small {
-            font-size: 0.84rem;
-            color: var(--muted);
+        audio {
+            width: 100%;
+            border-radius: 12px;
         }
 
         @media (max-width: 980px) {
@@ -469,624 +453,845 @@
         }
 
         @media (max-width: 640px) {
-            body {
-                padding: 14px;
-            }
-
-            .hero,
-            .panel {
-                padding: 18px;
-            }
-
-            .field.inline-2 {
-                grid-template-columns: 1fr;
-            }
+            body { padding: 14px; }
+            .hero, .panel { padding: 18px; }
+            .field.inline-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <main class="app">
-        <section class="hero glass">
-            <div class="hero-top">
-                <div class="brand">
-                    <div class="eyebrow">
-                        <span class="dot"></span>
-                        <span id="eyebrow-title">Módulo TTS</span>
-                    </div>
-                    <h1 id="app-title">TTS Local CPU</h1>
-                    <p id="app-description">
-                        Interfaz para convertir texto o documentos a audio, seguir el estado de cada tarea y reproducir o descargar el resultado final.
-                    </p>
-                </div>
+<main class="app">
+    <section class="hero glass">
+        <div class="eyebrow">
+            <span class="dot"></span>
+            <span>Módulo TTS</span>
+        </div>
+        <h1>TTS Local CPU</h1>
+        <p>
+            Elige un idioma, selecciona una voz, ajusta cómo quieres que suene y genera el audio.
+        </p>
+    </section>
 
-                <div class="hero-actions">
-                    <span id="health-badge" class="badge unknown">Comprobando servicio</span>
-                    <a id="docs-link" class="link-btn secondary" href="#" target="_blank" rel="noreferrer">Documentación</a>
-                    <button id="reload-meta" class="secondary" type="button">Actualizar estado</button>
-                </div>
-            </div>
+    <section class="layout">
+        <aside class="panel glass">
+            <h2>Generar audio</h2>
 
-            <div class="grid-metrics">
-                <div class="metric">
-                    <div class="k">Base pública</div>
-                    <div class="v" id="api-base-label">Detectando...</div>
-                </div>
-                <div class="metric">
-                    <div class="k">Versión</div>
-                    <div class="v" id="version-label">-</div>
-                </div>
-                <div class="metric">
-                    <div class="k">Voces</div>
-                    <div class="v" id="voices-count">Cargando...</div>
-                </div>
-                <div class="metric">
-                    <div class="k">Tareas</div>
-                    <div class="v" id="jobs-count">0 registradas</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="layout">
-            <aside class="panel glass">
-                <h2>Generar audio</h2>
-                <p>
-                    La interfaz utiliza una sola base de rutas. Puedes enviar texto o documentos y el sistema consultará el estado del job hasta que el audio esté listo.
-                </p>
-
-                <div class="stack">
+            <div class="stack">
+                <div class="field inline-2">
                     <div class="field">
-                        <label class="label" for="api-base">Base API</label>
-                        <input id="api-base" type="text" />
-                        <div class="small">Debe apuntar a la base pública del plugin, por ejemplo: <code>/api/tts_local_cpu</code></div>
+                        <label class="label" for="language-select">Idioma</label>
+                        <select id="language-select">
+                            <option value="">Selecciona un idioma</option>
+                        </select>
                     </div>
 
-                    <div class="field inline-2">
-                        <div class="field">
-                            <label class="label" for="voice-select">Voz</label>
-                            <select id="voice-select"></select>
-                        </div>
-
-                        <div class="field">
-                            <label class="label" for="job-kind">Tipo de envío</label>
-                            <select id="job-kind">
-                                <option value="text">Texto</option>
-                                <option value="document">Documento</option>
-                            </select>
-                        </div>
+                    <div class="field">
+                        <label class="label" for="voice-select">Voz</label>
+                        <select id="voice-select" disabled>
+                            <option value="">Primero selecciona un idioma</option>
+                        </select>
                     </div>
+                </div>
 
-                    <div id="text-section" class="field">
-                        <label class="label" for="text-input">Texto</label>
-                        <textarea id="text-input" placeholder="Escribe aquí el contenido que deseas convertir a voz..."></textarea>
-                    </div>
+                <div class="legend">
+                    <span class="legend-item"><i class="status-dot ok"></i> Lista para usar</span>
+                    <span class="legend-item"><i class="status-dot warn"></i> Falta descargarla</span>
+                </div>
 
-                    <div id="document-section" class="field" style="display:none;">
-                        <label class="label" for="document-input">Documento</label>
-                        <input id="document-input" type="file" accept=".txt,.md,.pdf,text/plain,text/markdown,application/pdf" />
-                        <div class="small">Formatos esperados: .txt, .md y .pdf</div>
-                    </div>
-
+                <div class="actions-card">
                     <div class="row">
-                        <button id="submit-job" class="primary" type="button">Enviar tarea</button>
-                        <button id="refresh-voices" class="secondary" type="button">Recargar voces</button>
-                        <button id="cleanup-jobs" class="secondary" type="button">Limpiar terminadas</button>
-                    </div>
-
-                    <div id="notice" class="notice" data-tone="neutral">Listo para enviar.</div>
-                </div>
-            </aside>
-
-            <section class="panel glass">
-                <div class="jobs-toolbar">
-                    <div>
-                        <h2>Tareas</h2>
-                        <p class="subtle" style="margin:6px 0 0;">
-                            Cada envío crea un job. Al terminar, podrás reproducir o descargar el audio.
-                        </p>
+                        <button id="fetch-language-voices" class="secondary" type="button" disabled hidden>Obtener voces del idioma</button>
+                        <button id="download-voice" class="secondary" type="button" disabled hidden>Descargar voz</button>
                     </div>
                 </div>
 
-                <div id="jobs" class="jobs"></div>
-            </section>
+                <div class="voice-card">
+                    <div class="voice-top">
+                        <strong>Estado</strong>
+                        <span id="voice-state-pill" class="badge">Sin selección</span>
+                    </div>
+
+                    <div id="voice-state-message" class="notice" data-tone="neutral">
+                        Selecciona primero un idioma.
+                    </div>
+
+                    <audio id="voice-sample" controls preload="none"></audio>
+
+                    <div id="download-progress-wrap" class="progress-wrap">
+                        <div id="download-progress-text" class="hint">Preparando descarga...</div>
+                        <div class="progress-track">
+                            <div id="download-progress-bar" class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="voice-settings-card" class="settings-card">
+                    <div class="voice-top">
+                        <strong>Ajustes de voz</strong>
+                        <span id="voice-settings-meta" class="hint">Valores generales</span>
+                    </div>
+
+                    <div class="slider-row">
+                        <div class="slider-head">
+                            <span class="slider-title">Naturalidad</span>
+                            <strong id="noise_scale_value">0.667</strong>
+                        </div>
+                        <input id="noise_scale" type="range" min="0" max="2" step="0.01" value="0.667" />
+                        <div class="slider-meta">
+                            Hace que la voz suene más estable o más variada.
+                            Rango: <span id="noise_scale_meta">0.0 a 2.0</span>.
+                        </div>
+                    </div>
+
+                    <div class="slider-row">
+                        <div class="slider-head">
+                            <span class="slider-title">Velocidad</span>
+                            <strong id="length_scale_value">1.000</strong>
+                        </div>
+                        <input id="length_scale" type="range" min="0.1" max="3" step="0.01" value="1" />
+                        <div class="slider-meta">
+                            Más bajo = más rápido. Más alto = más lento.
+                            Rango: <span id="length_scale_meta">0.1 a 3.0</span>.
+                        </div>
+                    </div>
+
+                    <div class="slider-row">
+                        <div class="slider-head">
+                            <span class="slider-title">Claridad</span>
+                            <strong id="noise_w_value">0.800</strong>
+                        </div>
+                        <input id="noise_w" type="range" min="0" max="2" step="0.01" value="0.8" />
+                        <div class="slider-meta">
+                            Ajusta cómo de marcada y cambiante suena la pronunciación.
+                            Rango: <span id="noise_w_meta">0.0 a 2.0</span>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="job-kind">Tipo de envío</label>
+                    <select id="job-kind">
+                        <option value="text">Texto</option>
+                        <option value="document">Documento</option>
+                    </select>
+                </div>
+
+                <div id="text-section" class="field">
+                    <label class="label" for="text-input">Texto</label>
+                    <textarea id="text-input" placeholder="Escribe aquí el contenido que deseas convertir a voz..."></textarea>
+                </div>
+
+                <div id="document-section" class="field" style="display:none;">
+                    <label class="label" for="document-input">Documento</label>
+                    <input id="document-input" type="file" accept=".txt,.md,.pdf,text/plain,text/markdown,application/pdf" />
+                    <div class="hint">Formatos permitidos: TXT, MD y PDF.</div>
+                </div>
+
+                <div class="row">
+                    <button id="submit-job" class="primary" type="button" disabled>Enviar tarea</button>
+                    <button id="cleanup-jobs" class="secondary" type="button">Limpiar terminadas</button>
+                </div>
+
+                <div id="notice" class="notice" data-tone="neutral">Listo para comenzar.</div>
+            </div>
+        </aside>
+
+        <section class="panel glass">
+            <h2>Tareas</h2>
+            <div id="jobs" class="jobs"></div>
         </section>
-    </main>
+    </section>
+</main>
 
-    <script>
-        const DEFAULT_BASE_PATH = "/api/tts_local_cpu";
+<script>
+const DEFAULT_BASE_PATH = "/api/tts_local_cpu";
 
-        const state = {
-            apiBase: "",
-            config: null,
-            voices: [],
-            jobs: [],
-            pollTimers: new Map(),
-        };
+const DEFAULT_VOICE_SETTINGS = {
+    noise_scale: {
+        value: 0.667,
+        min: 0.0,
+        max: 2.0,
+        step: 0.01,
+    },
+    length_scale: {
+        value: 1.0,
+        min: 0.1,
+        max: 3.0,
+        step: 0.01,
+    },
+    noise_w: {
+        value: 0.8,
+        min: 0.0,
+        max: 2.0,
+        step: 0.01,
+    },
+};
 
-        const elements = {
-            appTitle: document.getElementById("app-title"),
-            appDescription: document.getElementById("app-description"),
-            eyebrowTitle: document.getElementById("eyebrow-title"),
-            versionLabel: document.getElementById("version-label"),
-            apiBase: document.getElementById("api-base"),
-            apiBaseLabel: document.getElementById("api-base-label"),
-            voicesCount: document.getElementById("voices-count"),
-            jobsCount: document.getElementById("jobs-count"),
-            voiceSelect: document.getElementById("voice-select"),
-            textInput: document.getElementById("text-input"),
-            documentInput: document.getElementById("document-input"),
-            textSection: document.getElementById("text-section"),
-            documentSection: document.getElementById("document-section"),
-            submitJob: document.getElementById("submit-job"),
-            refreshVoices: document.getElementById("refresh-voices"),
-            cleanupJobs: document.getElementById("cleanup-jobs"),
-            jobs: document.getElementById("jobs"),
-            notice: document.getElementById("notice"),
-            docsLink: document.getElementById("docs-link"),
-            healthBadge: document.getElementById("health-badge"),
-            reloadMeta: document.getElementById("reload-meta"),
-            jobKind: document.getElementById("job-kind"),
-        };
+const state = {
+    apiBase: "",
+    voices: [],
+    languages: [],
+    downloads: {},
+    jobs: [],
+    selectedLanguage: "",
+    selectedVoiceSettings: null,
+    pollTimers: new Map(),
+    downloadTimer: null,
+    activeDownloadKey: null,
+};
 
-        function normalizeBasePath(value) {
-            if (!value) return DEFAULT_BASE_PATH;
-            return value.trim().replace(/\/+$/, "");
+const elements = {
+    languageSelect: document.getElementById("language-select"),
+    voiceSelect: document.getElementById("voice-select"),
+    voiceStatePill: document.getElementById("voice-state-pill"),
+    voiceStateMessage: document.getElementById("voice-state-message"),
+    voiceSample: document.getElementById("voice-sample"),
+    fetchLanguageVoices: document.getElementById("fetch-language-voices"),
+    downloadVoice: document.getElementById("download-voice"),
+    downloadProgressWrap: document.getElementById("download-progress-wrap"),
+    downloadProgressText: document.getElementById("download-progress-text"),
+    downloadProgressBar: document.getElementById("download-progress-bar"),
+    voiceSettingsCard: document.getElementById("voice-settings-card"),
+    voiceSettingsMeta: document.getElementById("voice-settings-meta"),
+    noiseScale: document.getElementById("noise_scale"),
+    lengthScale: document.getElementById("length_scale"),
+    noiseW: document.getElementById("noise_w"),
+    noiseScaleValue: document.getElementById("noise_scale_value"),
+    lengthScaleValue: document.getElementById("length_scale_value"),
+    noiseWValue: document.getElementById("noise_w_value"),
+    noiseScaleMeta: document.getElementById("noise_scale_meta"),
+    lengthScaleMeta: document.getElementById("length_scale_meta"),
+    noiseWMeta: document.getElementById("noise_w_meta"),
+    textInput: document.getElementById("text-input"),
+    documentInput: document.getElementById("document-input"),
+    textSection: document.getElementById("text-section"),
+    documentSection: document.getElementById("document-section"),
+    submitJob: document.getElementById("submit-job"),
+    cleanupJobs: document.getElementById("cleanup-jobs"),
+    jobs: document.getElementById("jobs"),
+    notice: document.getElementById("notice"),
+    jobKind: document.getElementById("job-kind"),
+};
+
+function normalizeBasePath(value) {
+    if (!value) return DEFAULT_BASE_PATH;
+    return value.trim().replace(/\/+$/, "");
+}
+
+function detectApiBaseFromLocation() {
+    const { origin, pathname } = window.location;
+    if (pathname.endsWith("/ui")) {
+        return `${origin}${pathname.replace(/\/ui$/, "")}`;
+    }
+    if (pathname.includes("/ui/")) {
+        return `${origin}${pathname.split("/ui/")[0]}`;
+    }
+    return `${origin}${DEFAULT_BASE_PATH}`;
+}
+
+function apiUrl(path) {
+    return `${state.apiBase}${path}`;
+}
+
+function setNotice(message, tone = "neutral") {
+    elements.notice.dataset.tone = tone;
+    elements.notice.textContent = message;
+}
+
+function getSelectedLanguageData() {
+    return state.languages.find((lang) => lang.code === state.selectedLanguage) || null;
+}
+
+function getSelectedVoiceName() {
+    return elements.voiceSelect.value || "";
+}
+
+function getSelectedVoiceData() {
+    const voiceName = getSelectedVoiceName();
+    return state.voices.find((voice) => voice.voice === voiceName) || null;
+}
+
+function getVoicesForSelectedLanguage() {
+    if (!state.selectedLanguage) return [];
+    return state.voices.filter((voice) => voice.lang === state.selectedLanguage);
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+function renderLanguageOptions() {
+    const options = [`<option value="">Selecciona un idioma</option>`];
+    for (const lang of state.languages) {
+        options.push(`<option value="${lang.code}">${escapeHtml(lang.label)}</option>`);
+    }
+    elements.languageSelect.innerHTML = options.join("");
+
+    if (state.selectedLanguage && state.languages.some((l) => l.code === state.selectedLanguage)) {
+        elements.languageSelect.value = state.selectedLanguage;
+    } else {
+        state.selectedLanguage = "";
+        elements.languageSelect.value = "";
+    }
+}
+
+function renderVoiceOptions() {
+    const voices = getVoicesForSelectedLanguage();
+
+    if (!state.selectedLanguage) {
+        elements.voiceSelect.disabled = true;
+        elements.voiceSelect.innerHTML = `<option value="">Primero selecciona un idioma</option>`;
+        return;
+    }
+
+    const langInfo = getSelectedLanguageData();
+    if (!langInfo || langInfo.lite_count === 0) {
+        elements.voiceSelect.disabled = true;
+        elements.voiceSelect.innerHTML = `<option value="">Primero obtén las voces del idioma</option>`;
+        return;
+    }
+
+    if (!voices.length) {
+        elements.voiceSelect.disabled = true;
+        elements.voiceSelect.innerHTML = `<option value="">No hay voces para este idioma</option>`;
+        return;
+    }
+
+    elements.voiceSelect.disabled = false;
+    elements.voiceSelect.innerHTML = voices.map((voice) => {
+        const marker = voice.model_available ? "🟢" : "🟡";
+        return `<option value="${escapeHtml(voice.voice)}">${marker} ${escapeHtml(voice.speaker)}</option>`;
+    }).join("");
+}
+
+function renderProgress(runtime) {
+    const progress = Number(runtime.progress || 0);
+    elements.downloadProgressWrap.classList.add("show");
+    elements.downloadProgressBar.style.width = `${Math.max(0, Math.min(progress, 100))}%`;
+    const fileLabel = runtime.current_file ? ` • ${runtime.current_file}` : "";
+    elements.downloadProgressText.textContent = `${progress.toFixed(1)}%${fileLabel}`;
+}
+
+function hideProgress() {
+    elements.downloadProgressWrap.classList.remove("show");
+    elements.downloadProgressBar.style.width = "0%";
+    elements.downloadProgressText.textContent = "Preparando descarga...";
+}
+
+function applySettingControl(input, valueLabel, metaLabel, config) {
+    input.min = config.min;
+    input.max = config.max;
+    input.step = config.step;
+    input.value = config.value;
+    valueLabel.textContent = Number(config.value).toFixed(3);
+    metaLabel.textContent = `${config.min} a ${config.max}`;
+}
+
+function applyDefaultVoiceSettings() {
+    state.selectedVoiceSettings = null;
+    elements.voiceSettingsMeta.textContent = "Valores generales";
+
+    applySettingControl(
+        elements.noiseScale,
+        elements.noiseScaleValue,
+        elements.noiseScaleMeta,
+        DEFAULT_VOICE_SETTINGS.noise_scale
+    );
+    applySettingControl(
+        elements.lengthScale,
+        elements.lengthScaleValue,
+        elements.lengthScaleMeta,
+        DEFAULT_VOICE_SETTINGS.length_scale
+    );
+    applySettingControl(
+        elements.noiseW,
+        elements.noiseWValue,
+        elements.noiseWMeta,
+        DEFAULT_VOICE_SETTINGS.noise_w
+    );
+
+    refreshSliderLabels();
+}
+
+async function loadVoiceSettings() {
+    const voiceName = getSelectedVoiceName();
+    const voice = getSelectedVoiceData();
+
+    if (!voice || !voice.lite_available) {
+        applyDefaultVoiceSettings();
+        return;
+    }
+
+    try {
+        const data = await fetchJson(apiUrl(`/voices/${encodeURIComponent(voiceName)}/settings`));
+        state.selectedVoiceSettings = data;
+        elements.voiceSettingsMeta.textContent =
+            `${data.voice_name || ""}${data.audio?.quality ? " · " + data.audio.quality : ""}`;
+
+        applySettingControl(elements.noiseScale, elements.noiseScaleValue, elements.noiseScaleMeta, data.configurable.noise_scale);
+        applySettingControl(elements.lengthScale, elements.lengthScaleValue, elements.lengthScaleMeta, data.configurable.length_scale);
+        applySettingControl(elements.noiseW, elements.noiseWValue, elements.noiseWMeta, data.configurable.noise_w);
+
+        refreshSliderLabels();
+    } catch {
+        applyDefaultVoiceSettings();
+    }
+}
+
+function collectVoiceSettings() {
+    return {
+        noise_scale: Number(elements.noiseScale.value),
+        length_scale: Number(elements.lengthScale.value),
+        noise_w: Number(elements.noiseW.value),
+    };
+}
+
+function refreshSliderLabels() {
+    elements.noiseScaleValue.textContent = Number(elements.noiseScale.value).toFixed(3);
+    elements.lengthScaleValue.textContent = Number(elements.lengthScale.value).toFixed(3);
+    elements.noiseWValue.textContent = Number(elements.noiseW.value).toFixed(3);
+}
+
+function updateActionVisibility() {
+    const langInfo = getSelectedLanguageData();
+    const voice = getSelectedVoiceData();
+
+    const shouldShowFetchLanguage =
+        !!state.selectedLanguage &&
+        !!langInfo &&
+        langInfo.lite_count === 0;
+
+    const shouldShowDownloadVoice =
+        !!voice &&
+        voice.lite_available &&
+        !voice.model_available;
+
+    elements.fetchLanguageVoices.hidden = !shouldShowFetchLanguage;
+    elements.downloadVoice.hidden = !shouldShowDownloadVoice;
+    elements.fetchLanguageVoices.disabled = !shouldShowFetchLanguage;
+    elements.downloadVoice.disabled = !shouldShowDownloadVoice;
+}
+
+function updateVoiceStateUI(downloadStatus = null) {
+    const langInfo = getSelectedLanguageData();
+    const voice = getSelectedVoiceData();
+    const voiceName = getSelectedVoiceName();
+
+    updateActionVisibility();
+
+    if (!state.selectedLanguage) {
+        elements.voiceStatePill.textContent = "Sin idioma";
+        elements.voiceStateMessage.dataset.tone = "neutral";
+        elements.voiceStateMessage.textContent = "Selecciona primero un idioma.";
+        elements.submitJob.disabled = true;
+        elements.voiceSample.removeAttribute("src");
+        elements.voiceSample.load();
+        hideProgress();
+        applyDefaultVoiceSettings();
+        return;
+    }
+
+    const languageKey = `lang:${state.selectedLanguage}`;
+    const languageDownload = state.downloads[languageKey];
+
+    if (!langInfo || langInfo.lite_count === 0) {
+        elements.voiceStatePill.textContent = "Catálogo pendiente";
+        elements.voiceStateMessage.dataset.tone = "warning";
+        elements.voiceStateMessage.textContent = "Este idioma todavía no tiene voces locales. Debes obtenerlas primero.";
+        elements.submitJob.disabled = true;
+        elements.voiceSample.removeAttribute("src");
+        elements.voiceSample.load();
+        applyDefaultVoiceSettings();
+
+        if (languageDownload && ["queued", "running"].includes(languageDownload.status)) {
+            renderProgress(languageDownload);
+        } else {
+            hideProgress();
         }
+        return;
+    }
 
-        function detectApiBaseFromLocation() {
-            const { origin, pathname } = window.location;
+    if (!voice || !voiceName) {
+        elements.voiceStatePill.textContent = "Sin voz";
+        elements.voiceStateMessage.dataset.tone = "neutral";
+        elements.voiceStateMessage.textContent = "Selecciona una voz.";
+        elements.submitJob.disabled = true;
+        hideProgress();
+        applyDefaultVoiceSettings();
+        return;
+    }
 
-            if (pathname.endsWith("/ui")) {
-                return `${origin}${pathname.replace(/\/ui$/, "")}`;
-            }
+    elements.voiceSample.src = apiUrl(`/voices/${encodeURIComponent(voiceName)}/sample`);
+    elements.voiceSample.load();
 
-            if (pathname.includes("/ui/")) {
-                return `${origin}${pathname.split("/ui/")[0]}`;
-            }
+    const voiceKey = `voice:${voiceName}`;
+    const runtime = downloadStatus || state.downloads[voiceKey] || null;
 
-            return `${origin}${DEFAULT_BASE_PATH}`;
+    if (voice.model_available) {
+        elements.voiceStatePill.textContent = "🟢 Lista para usar";
+        elements.voiceStateMessage.dataset.tone = "success";
+        elements.voiceStateMessage.textContent = "La voz está descargada y lista.";
+        elements.submitJob.disabled = false;
+        hideProgress();
+        loadVoiceSettings();
+        return;
+    }
+
+    if (runtime && ["queued", "running"].includes(runtime.status)) {
+        elements.voiceStatePill.textContent = "🟡 Descargando";
+        elements.voiceStateMessage.dataset.tone = "warning";
+        elements.voiceStateMessage.textContent = "Se está descargando esta voz.";
+        elements.submitJob.disabled = true;
+        renderProgress(runtime);
+        loadVoiceSettings();
+        return;
+    }
+
+    elements.voiceStatePill.textContent = "🟡 Falta descargar";
+    elements.voiceStateMessage.dataset.tone = "warning";
+    elements.voiceStateMessage.textContent = "Esta voz aún no está lista para usar.";
+    elements.submitJob.disabled = true;
+    hideProgress();
+    loadVoiceSettings();
+}
+
+function renderJobs() {
+    if (!state.jobs.length) {
+        elements.jobs.innerHTML = `<div class="empty-state">No hay tareas todavía.</div>`;
+        return;
+    }
+
+    elements.jobs.innerHTML = state.jobs.map((job) => `
+        <details class="job">
+            <summary>
+                <div class="job-main">
+                    <div class="job-title">${escapeHtml(job.kind === "document" ? "Documento" : "Texto")}</div>
+                    <div class="job-sub">${escapeHtml(job.voice || "-")} · ${escapeHtml(job.jobId)}</div>
+                </div>
+                <div class="job-state">${escapeHtml(job.status)}</div>
+            </summary>
+            <div class="job-body">
+                ${job.preview ? `<pre class="preview">${escapeHtml(job.preview)}</pre>` : ""}
+                ${job.status === "done" ? `<audio controls preload="metadata" src="${escapeHtml(job.resultUrl)}"></audio>` : ""}
+                ${job.error ? `<div class="notice" data-tone="error">${escapeHtml(job.error)}</div>` : ""}
+            </div>
+        </details>
+    `).join("");
+}
+
+async function fetchJson(url, options = {}) {
+    const response = await fetch(url, options);
+    let data = null;
+
+    const contentType = response.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+        data = await response.json();
+    } else {
+        const text = await response.text();
+        data = text ? { detail: text } : null;
+    }
+
+    if (!response.ok) {
+        throw new Error(data?.detail || `Error HTTP ${response.status}`);
+    }
+    return data;
+}
+
+async function loadVoices(refresh = false) {
+    state.apiBase = normalizeBasePath(detectApiBaseFromLocation());
+    const data = await fetchJson(apiUrl(`/voices${refresh ? "?refresh=true" : ""}`));
+    state.languages = Array.isArray(data?.languages) ? data.languages : [];
+    state.voices = Array.isArray(data?.voices) ? data.voices : [];
+    state.downloads = data?.downloads || {};
+
+    renderLanguageOptions();
+    renderVoiceOptions();
+    updateVoiceStateUI();
+}
+
+function toggleSections() {
+    const kind = elements.jobKind.value;
+    elements.textSection.style.display = kind === "text" ? "grid" : "none";
+    elements.documentSection.style.display = kind === "document" ? "grid" : "none";
+    elements.submitJob.textContent = kind === "document" ? "Subir documento" : "Enviar texto";
+}
+
+function stopDownloadPolling() {
+    if (state.downloadTimer) {
+        clearInterval(state.downloadTimer);
+        state.downloadTimer = null;
+    }
+    state.activeDownloadKey = null;
+}
+
+async function pollDownloadStatus() {
+    if (!state.activeDownloadKey) {
+        stopDownloadPolling();
+        return;
+    }
+
+    try {
+        const status = await fetchJson(apiUrl(`/voices/downloads/${encodeURIComponent(state.activeDownloadKey)}`));
+        state.downloads[state.activeDownloadKey] = status;
+        updateVoiceStateUI(status);
+
+        if (status.status === "done") {
+            stopDownloadPolling();
+            await loadVoices(true);
+            setNotice("Descarga completada.", "success");
+        } else if (status.status === "failed") {
+            stopDownloadPolling();
+            setNotice(`La descarga falló: ${status.message || "sin detalle"}`, "error");
         }
+    } catch (error) {
+        stopDownloadPolling();
+        setNotice(`No se pudo consultar el progreso: ${error.message}`, "error");
+    }
+}
 
-        function getBaseOnlyPath() {
-            try {
-                const url = new URL(state.apiBase);
-                return url.pathname.replace(/\/+$/, "") || DEFAULT_BASE_PATH;
-            } catch {
-                return normalizeBasePath(state.apiBase);
-            }
-        }
+function startDownloadPolling(key) {
+    stopDownloadPolling();
+    state.activeDownloadKey = key;
+    pollDownloadStatus();
+    state.downloadTimer = setInterval(pollDownloadStatus, 700);
+}
 
-        function apiUrl(path) {
-            return `${state.apiBase}${path}`;
-        }
+async function fetchLanguageVoices() {
+    if (!state.selectedLanguage) {
+        setNotice("Selecciona un idioma primero.", "error");
+        return;
+    }
 
-        function setNotice(message, tone = "neutral") {
-            elements.notice.dataset.tone = tone;
-            elements.notice.textContent = message;
-        }
+    try {
+        const result = await fetchJson(apiUrl("/voices/language"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ lang: state.selectedLanguage }),
+        });
+        const key = `lang:${state.selectedLanguage}`;
+        state.downloads[key] = result;
+        startDownloadPolling(key);
+        setNotice(`Descargando voces del idioma ${state.selectedLanguage}.`, "success");
+        updateVoiceStateUI(result);
+    } catch (error) {
+        setNotice(`No se pudo obtener las voces del idioma: ${error.message}`, "error");
+    }
+}
 
-        function setHealthBadge(mode, message) {
-            elements.healthBadge.className = `badge ${mode}`;
-            elements.healthBadge.textContent = message;
-        }
+async function downloadSelectedVoice() {
+    const voice = getSelectedVoiceName();
+    if (!voice) {
+        setNotice("Selecciona una voz.", "error");
+        return;
+    }
 
-        function escapeHtml(value) {
-            return String(value)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#39;");
-        }
+    try {
+        const result = await fetchJson(apiUrl("/voices/download"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ voice, mode: "model" }),
+        });
+        const key = `voice:${voice}`;
+        state.downloads[key] = result;
+        startDownloadPolling(key);
+        setNotice(`Descargando voz.`, "success");
+        updateVoiceStateUI(result);
+    } catch (error) {
+        setNotice(`No se pudo descargar la voz: ${error.message}`, "error");
+    }
+}
 
-        function shorten(text, max = 900) {
-            if (!text) return "";
-            return text.length <= max ? text : `${text.slice(0, max)}\n\n...`;
-        }
+async function createTextJob() {
+    const voice = getSelectedVoiceName();
+    const voiceData = getSelectedVoiceData();
+    const text = elements.textInput.value.trim();
 
-        function formatDate(value) {
-            if (!value) return "-";
-            const date = new Date(value);
-            if (Number.isNaN(date.getTime())) return "-";
-            return date.toLocaleString();
-        }
+    if (!voice || !voiceData?.model_available) {
+        setNotice("La voz seleccionada todavía no está lista.", "error");
+        return;
+    }
 
-        function updateMetrics() {
-            elements.apiBaseLabel.textContent = state.apiBase || "-";
-            elements.voicesCount.textContent = state.voices.length
-                ? `${state.voices.length} disponibles`
-                : "Sin cargar";
-            elements.jobsCount.textContent = `${state.jobs.length} registradas`;
-            elements.versionLabel.textContent = state.config?.version || "-";
-        }
+    if (!text) {
+        setNotice("Debes escribir un texto.", "error");
+        return;
+    }
 
-        function renderVoiceOptions() {
-            const current = elements.voiceSelect.value;
+    try {
+        const data = await fetchJson(apiUrl("/text"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                text,
+                voice,
+                voice_settings: collectVoiceSettings(),
+            }),
+        });
 
-            if (!state.voices.length) {
-                elements.voiceSelect.innerHTML = '<option value="">No hay voces disponibles</option>';
-                return;
-            }
+        state.jobs.unshift({
+            jobId: data.job_id,
+            status: data.status,
+            kind: "text",
+            voice: voiceData.speaker,
+            preview: text,
+            resultUrl: apiUrl(`/jobs/${data.job_id}/result`),
+        });
+        renderJobs();
+        startPolling(data.job_id);
+        setNotice(`Texto enviado correctamente.`, "success");
+    } catch (error) {
+        setNotice(`No se pudo crear la tarea: ${error.message}`, "error");
+    }
+}
 
-            elements.voiceSelect.innerHTML = state.voices
-                .map((voice) => `<option value="${escapeHtml(voice)}">${escapeHtml(voice)}</option>`)
-                .join("");
+async function createDocumentJob() {
+    const voice = getSelectedVoiceName();
+    const voiceData = getSelectedVoiceData();
+    const file = elements.documentInput.files[0];
 
-            if (state.voices.includes(current)) {
-                elements.voiceSelect.value = current;
-            }
-        }
+    if (!voice || !voiceData?.model_available) {
+        setNotice("La voz seleccionada todavía no está lista.", "error");
+        return;
+    }
 
-        function renderConfig(config) {
-            const displayName = config?.display_name || "TTS Local CPU";
-            const description = config?.description || "Interfaz de texto a voz.";
-            const version = config?.version || "-";
-            const docs = config?.documentation_entry_point || `${getBaseOnlyPath()}/docs`;
+    if (!file) {
+        setNotice("Selecciona un archivo.", "error");
+        return;
+    }
 
-            document.title = displayName;
-            elements.appTitle.textContent = displayName;
-            elements.eyebrowTitle.textContent = "Módulo TTS";
-            elements.appDescription.textContent = description;
-            elements.versionLabel.textContent = version;
-            elements.docsLink.href = docs;
-        }
+    try {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("voice", voice);
+        formData.append("voice_settings_json", JSON.stringify(collectVoiceSettings()));
 
-        function renderJobs() {
-            updateMetrics();
+        const data = await fetchJson(apiUrl("/document"), {
+            method: "POST",
+            body: formData,
+        });
 
-            if (!state.jobs.length) {
-                elements.jobs.innerHTML = `
-                    <div class="empty-state">
-                        No hay tareas todavía. Envía texto o un documento para comenzar.
-                    </div>
-                `;
-                return;
-            }
+        state.jobs.unshift({
+            jobId: data.job_id,
+            status: data.status,
+            kind: "document",
+            voice: voiceData.speaker,
+            preview: `Archivo: ${file.name}`,
+            resultUrl: apiUrl(`/jobs/${data.job_id}/result`),
+        });
+        renderJobs();
+        startPolling(data.job_id);
+        setNotice(`Documento enviado correctamente.`, "success");
+    } catch (error) {
+        setNotice(`No se pudo crear la tarea: ${error.message}`, "error");
+    }
+}
 
-            elements.jobs.innerHTML = state.jobs.map((job) => {
-                const preview = job.preview
-                    ? `<pre class="preview">${escapeHtml(shorten(job.preview))}</pre>`
-                    : `<div class="preview empty">Sin vista previa disponible.</div>`;
+async function submitCurrentJob() {
+    if (elements.jobKind.value === "document") {
+        await createDocumentJob();
+    } else {
+        await createTextJob();
+    }
+}
 
-                const audio = job.status === "done"
-                    ? `
-                        <div class="audio-block">
-                            <audio controls preload="metadata" src="${escapeHtml(job.resultUrl)}"></audio>
-                            <div class="job-actions">
-                                <a class="link-btn primary" href="${escapeHtml(job.resultUrl)}" download="${escapeHtml(job.jobId)}.wav">Descargar audio</a>
-                            </div>
-                        </div>
-                    `
-                    : "";
+function upsertJob(partial) {
+    const index = state.jobs.findIndex((job) => job.jobId === partial.jobId);
+    if (index === -1) {
+        state.jobs.unshift(partial);
+    } else {
+        state.jobs[index] = { ...state.jobs[index], ...partial };
+    }
+    renderJobs();
+}
 
-                const error = job.error
-                    ? `<div class="notice" data-tone="error">${escapeHtml(job.error)}</div>`
-                    : "";
+function stopPolling(jobId) {
+    const timer = state.pollTimers.get(jobId);
+    if (timer) {
+        clearInterval(timer);
+        state.pollTimers.delete(jobId);
+    }
+}
 
-                return `
-                    <article class="job-card">
-                        <div class="job-head">
-                            <div>
-                                <h3>${job.kind === "document" ? "Documento" : "Texto"}</h3>
-                                <div class="job-meta">
-                                    <span><strong>ID:</strong> ${escapeHtml(job.jobId)}</span>
-                                    <span><strong>Voz:</strong> ${escapeHtml(job.voice || "-")}</span>
-                                    <span><strong>Creada:</strong> ${escapeHtml(formatDate(job.createdAt))}</span>
-                                    <span><strong>Inicio:</strong> ${escapeHtml(formatDate(job.startedAt))}</span>
-                                    <span><strong>Fin:</strong> ${escapeHtml(formatDate(job.finishedAt))}</span>
-                                </div>
-                            </div>
-                            <span class="pill" data-status="${escapeHtml(job.status || "queued")}">${escapeHtml(job.status || "queued")}</span>
-                        </div>
-                        ${preview}
-                        ${audio}
-                        ${error}
-                    </article>
-                `;
-            }).join("");
-        }
+async function syncJob(jobId) {
+    try {
+        const status = await fetchJson(apiUrl(`/jobs/${jobId}`));
+        upsertJob({
+            jobId: status.job_id,
+            status: status.status,
+            kind: status.kind,
+            voice: status.voice,
+            error: status.error,
+            resultUrl: apiUrl(`/jobs/${jobId}/result`),
+        });
 
-        async function fetchJson(url, options = {}) {
-            const response = await fetch(url, options);
-            let data = null;
-
-            const contentType = response.headers.get("content-type") || "";
-
-            if (contentType.includes("application/json")) {
-                try {
-                    data = await response.json();
-                } catch {
-                    data = null;
-                }
-            } else {
-                try {
-                    const text = await response.text();
-                    data = text ? { detail: text } : null;
-                } catch {
-                    data = null;
-                }
-            }
-
-            if (!response.ok) {
-                throw new Error(data?.detail || `Error HTTP ${response.status}`);
-            }
-
-            return data;
-        }
-
-        async function loadConfig() {
-            try {
-                const config = await fetchJson(apiUrl("/config"));
-                state.config = config;
-                renderConfig(config);
-            } catch (error) {
-                state.config = null;
-                renderConfig(null);
-                setNotice(`No se pudo cargar la configuración del plugin: ${error.message}`, "warning");
-            }
-        }
-
-        async function checkHealth() {
-            try {
-                const health = await fetchJson(apiUrl("/health"));
-                if (health?.status === "online") {
-                    setHealthBadge("ok", "Servicio en línea");
-                } else {
-                    setHealthBadge("unknown", "Estado desconocido");
-                }
-            } catch (error) {
-                setHealthBadge("off", "Servicio no disponible");
-            }
-        }
-
-        async function loadVoices() {
-            state.apiBase = normalizeBasePath(elements.apiBase.value || detectApiBaseFromLocation());
-            elements.apiBase.value = state.apiBase;
-            updateMetrics();
-
-            try {
-                const data = await fetchJson(apiUrl("/voices"));
-                state.voices = Array.isArray(data?.voices) ? data.voices : [];
-                renderVoiceOptions();
-                updateMetrics();
-                setNotice("Voces cargadas correctamente.", "success");
-            } catch (error) {
-                state.voices = [];
-                renderVoiceOptions();
-                updateMetrics();
-                setNotice(`No se pudieron cargar las voces: ${error.message}`, "error");
-            }
-        }
-
-        async function cleanupFinishedJobs(silent = false) {
-            state.apiBase = normalizeBasePath(elements.apiBase.value || detectApiBaseFromLocation());
-            elements.apiBase.value = state.apiBase;
-
-            try {
-                const data = await fetchJson(apiUrl("/jobs"), { method: "DELETE" });
-                state.jobs = state.jobs.filter((job) => !["done", "failed"].includes(job.status));
-                renderJobs();
-
-                if (!silent) {
-                    const removed = data?.removed_jobs ?? 0;
-                    setNotice(`Limpieza completada. ${removed} jobs eliminados.`, "success");
-                }
-            } catch (error) {
-                if (!silent) {
-                    setNotice(`No se pudo limpiar: ${error.message}`, "error");
-                }
-            }
-        }
-
-        function upsertJob(partial) {
-            const index = state.jobs.findIndex((job) => job.jobId === partial.jobId);
-            if (index === -1) {
-                state.jobs.unshift(partial);
-            } else {
-                state.jobs[index] = { ...state.jobs[index], ...partial };
-            }
-            renderJobs();
-        }
-
-        function stopPolling(jobId) {
-            const timer = state.pollTimers.get(jobId);
-            if (timer) {
-                clearInterval(timer);
-                state.pollTimers.delete(jobId);
-            }
-        }
-
-        async function syncJob(jobId) {
-            try {
-                const status = await fetchJson(apiUrl(`/jobs/${jobId}`));
-
-                upsertJob({
-                    jobId: status.job_id,
-                    status: status.status,
-                    kind: status.kind,
-                    voice: status.voice,
-                    createdAt: status.created_at,
-                    startedAt: status.started_at,
-                    finishedAt: status.finished_at,
-                    error: status.error,
-                    resultUrl: apiUrl(`/jobs/${jobId}/result`),
-                });
-
-                if (status.status === "done" || status.status === "failed") {
-                    stopPolling(jobId);
-
-                    if (status.status === "done") {
-                        setNotice(`La tarea ${jobId} terminó correctamente.`, "success");
-                    } else {
-                        setNotice(`La tarea ${jobId} falló: ${status.error || "sin detalle"}`, "error");
-                    }
-                }
-            } catch (error) {
-                stopPolling(jobId);
-                upsertJob({
-                    jobId,
-                    status: "failed",
-                    error: error.message,
-                });
-                setNotice(`Error consultando job ${jobId}: ${error.message}`, "error");
-            }
-        }
-
-        function startPolling(jobId) {
+        if (status.status === "done" || status.status === "failed") {
             stopPolling(jobId);
-            syncJob(jobId);
-            const timer = setInterval(() => syncJob(jobId), 2000);
-            state.pollTimers.set(jobId, timer);
         }
+    } catch (error) {
+        stopPolling(jobId);
+        upsertJob({
+            jobId,
+            status: "failed",
+            error: error.message,
+        });
+    }
+}
 
-        async function createTextJob() {
-            const voice = elements.voiceSelect.value;
-            const text = elements.textInput.value.trim();
+function startPolling(jobId) {
+    stopPolling(jobId);
+    syncJob(jobId);
+    const timer = setInterval(() => syncJob(jobId), 2000);
+    state.pollTimers.set(jobId, timer);
+}
 
-            if (!voice) {
-                setNotice("Selecciona una voz antes de enviar.", "error");
-                return;
-            }
+async function cleanupFinishedJobs() {
+    try {
+        await fetchJson(apiUrl("/jobs"), { method: "DELETE" });
+        state.jobs = state.jobs.filter((job) => !["done", "failed"].includes(job.status));
+        renderJobs();
+        setNotice("Limpieza completada.", "success");
+    } catch (error) {
+        setNotice(`No se pudo limpiar: ${error.message}`, "error");
+    }
+}
 
-            if (!text) {
-                setNotice("Debes escribir un texto antes de enviarlo.", "error");
-                return;
-            }
+function onLanguageChange() {
+    state.selectedLanguage = elements.languageSelect.value || "";
+    renderVoiceOptions();
+    updateVoiceStateUI();
+}
 
-            elements.submitJob.disabled = true;
-            setNotice("Encolando texto...", "neutral");
+function onVoiceChange() {
+    updateVoiceStateUI();
+}
 
-            try {
-                const data = await fetchJson(apiUrl("/text"), {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text, voice }),
-                });
+async function initialize() {
+    state.apiBase = normalizeBasePath(detectApiBaseFromLocation());
+    toggleSections();
+    renderJobs();
+    applyDefaultVoiceSettings();
+    await loadVoices(false);
+    updateVoiceStateUI();
+    refreshSliderLabels();
+}
 
-                upsertJob({
-                    jobId: data.job_id,
-                    status: data.status,
-                    kind: "text",
-                    voice,
-                    preview: text,
-                    createdAt: new Date().toISOString(),
-                    startedAt: null,
-                    finishedAt: null,
-                    error: null,
-                    resultUrl: apiUrl(`/jobs/${data.job_id}/result`),
-                });
+elements.languageSelect.addEventListener("change", onLanguageChange);
+elements.voiceSelect.addEventListener("change", onVoiceChange);
+elements.jobKind.addEventListener("change", toggleSections);
+elements.fetchLanguageVoices.addEventListener("click", fetchLanguageVoices);
+elements.downloadVoice.addEventListener("click", downloadSelectedVoice);
+elements.submitJob.addEventListener("click", submitCurrentJob);
+elements.cleanupJobs.addEventListener("click", cleanupFinishedJobs);
 
-                startPolling(data.job_id);
-                setNotice(`Texto enviado correctamente como job ${data.job_id}.`, "success");
-            } catch (error) {
-                setNotice(`No se pudo crear el job de texto: ${error.message}`, "error");
-            } finally {
-                elements.submitJob.disabled = false;
-            }
-        }
+elements.noiseScale.addEventListener("input", refreshSliderLabels);
+elements.lengthScale.addEventListener("input", refreshSliderLabels);
+elements.noiseW.addEventListener("input", refreshSliderLabels);
 
-        async function createDocumentJob() {
-            const voice = elements.voiceSelect.value;
-            const file = elements.documentInput.files[0];
-
-            if (!voice) {
-                setNotice("Selecciona una voz antes de subir el documento.", "error");
-                return;
-            }
-
-            if (!file) {
-                setNotice("Selecciona un archivo antes de enviarlo.", "error");
-                return;
-            }
-
-            elements.submitJob.disabled = true;
-            setNotice("Subiendo documento...", "neutral");
-
-            try {
-                let preview = `Archivo: ${file.name}`;
-                if (file.type.startsWith("text/") || /\.(txt|md)$/i.test(file.name)) {
-                    preview = await file.text();
-                }
-
-                const formData = new FormData();
-                formData.append("file", file);
-                formData.append("voice", voice);
-
-                const data = await fetchJson(apiUrl("/document"), {
-                    method: "POST",
-                    body: formData,
-                });
-
-                upsertJob({
-                    jobId: data.job_id,
-                    status: data.status,
-                    kind: "document",
-                    voice,
-                    preview,
-                    createdAt: new Date().toISOString(),
-                    startedAt: null,
-                    finishedAt: null,
-                    error: null,
-                    resultUrl: apiUrl(`/jobs/${data.job_id}/result`),
-                });
-
-                startPolling(data.job_id);
-                setNotice(`Documento enviado correctamente como job ${data.job_id}.`, "success");
-                elements.documentInput.value = "";
-            } catch (error) {
-                setNotice(`No se pudo crear el job de documento: ${error.message}`, "error");
-            } finally {
-                elements.submitJob.disabled = false;
-            }
-        }
-
-        async function submitCurrentJob() {
-            const kind = elements.jobKind.value;
-            if (kind === "document") {
-                await createDocumentJob();
-                return;
-            }
-            await createTextJob();
-        }
-
-        function toggleSections() {
-            const kind = elements.jobKind.value;
-            elements.textSection.style.display = kind === "text" ? "grid" : "none";
-            elements.documentSection.style.display = kind === "document" ? "grid" : "none";
-            elements.submitJob.textContent = kind === "document" ? "Subir documento" : "Enviar texto";
-        }
-
-        async function refreshAll() {
-            state.apiBase = normalizeBasePath(elements.apiBase.value || detectApiBaseFromLocation());
-            elements.apiBase.value = state.apiBase;
-            updateMetrics();
-
-            await Promise.allSettled([
-                loadConfig(),
-                checkHealth(),
-                loadVoices(),
-            ]);
-        }
-
-        elements.refreshVoices.addEventListener("click", loadVoices);
-        elements.cleanupJobs.addEventListener("click", () => cleanupFinishedJobs(false));
-        elements.submitJob.addEventListener("click", submitCurrentJob);
-        elements.apiBase.addEventListener("change", refreshAll);
-        elements.reloadMeta.addEventListener("click", refreshAll);
-        elements.jobKind.addEventListener("change", toggleSections);
-
-        async function initialize() {
-            state.apiBase = detectApiBaseFromLocation();
-            elements.apiBase.value = state.apiBase;
-
-            toggleSections();
-            renderJobs();
-            updateMetrics();
-
-            await refreshAll();
-            await cleanupFinishedJobs(true);
-        }
-
-        initialize();
-    </script>
+initialize();
+</script>
 </body>
 </html>
