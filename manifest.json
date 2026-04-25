@@ -5,8 +5,8 @@
   "configuration_entry_point": "/api/tts_local_cpu/config/",
   "documentation_entry_point": "/api/tts_local_cpu/docs",
   "healthcheck_entry_point": "/api/tts_local_cpu/health",
-  "version": "5.0.0",
-  "logo": "stt_logo.png",
+  "version": "5.0.1",
+  "logo": "tts_logo.png",
   "description": "Módulo TTS oficial para QueAI. Texto a voz de alta fidelidad basado en Piper. Ejecución local en CPU, soporte para Inglés/Español y múltiples voces.",
   "author": "Juana Iris Perez && Alejandro Fonseca",
   "license": "MIT"
